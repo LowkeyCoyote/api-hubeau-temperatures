@@ -71,8 +71,7 @@ export default function Dashboard() {
       let response = await axios.get(
         `https://hubeau.eaufrance.fr/api/v1/temperature/chronique?code_departement=${options.departement}&date_debut_mesure=${options.date}&date_fin_mesure=${options.date}&fields=resultat,libelle_commune,code_cours_eau,localisation&size=${options.size}`
       );
-      let arrayData = response.data.data;
-      transformDataForDisplay(arrayData);
+      transformDataForDisplay(response.data.data);
       setLoading(false);
     } catch (error) {
       console.error(error);
@@ -100,7 +99,7 @@ export default function Dashboard() {
           <DatePicker
             label="Choisissez une date"
             minDate={dayjs('01-01-2010')}
-            maxDate={dayjs('31-12-2022')}
+            maxDate={dayjs('12-31-2022')}
             defaultValue={dayjs('01-01-2022')}
             format="DD-MM-YYYY"
             slotProps={{
