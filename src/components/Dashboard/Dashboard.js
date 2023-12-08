@@ -40,24 +40,24 @@ export default function Dashboard() {
     return newObject;
   }
 
-  function createObjectForDisplay(sortedData) {
+  function createObjectForDisplay(objectData) {
     let objectForDisplay = {};
-    for (let key in sortedData) {
-      let tempArr = sortedData[key].temperatures;
+    for (let key in objectData) {
+      let tempArr = objectData[key].temperatures;
       let minTemp = Math.min(...tempArr).toFixed(2);
       let maxTemp = Math.max(...tempArr).toFixed(2);
       let avgTemp = (
-        sortedData[key].temperatures.reduce((acc, curVal) => acc + curVal) /
-        sortedData[key].temperatures.length
+        objectData[key].temperatures.reduce((acc, curVal) => acc + curVal) /
+        objectData[key].temperatures.length
       ).toFixed(2);
-      sortedData[key].temperatures = {
+      objectData[key].temperatures = {
         min: minTemp,
         max: maxTemp,
         avg: avgTemp,
       };
     }
 
-    objectForDisplay = sortedData;
+    objectForDisplay = objectData;
     return objectForDisplay;
   }
 
