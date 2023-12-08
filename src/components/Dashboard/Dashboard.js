@@ -40,7 +40,6 @@ export default function Dashboard() {
     return newObject;
   }
 
-
   function createObjectForDisplay(sortedData) {
     let objectForDisplay = {};
     for (let key in sortedData) {
@@ -63,8 +62,8 @@ export default function Dashboard() {
   }
 
   function transformDataForDisplay(datas) {
-    let sortedData = createObjectFromData(datas);
-    setDatas(createObjectForDisplay(sortedData));
+    let objectFromData = createObjectFromData(datas);
+    setDatas(createObjectForDisplay(objectFromData));
   }
 
   const fetchData = async () => {
